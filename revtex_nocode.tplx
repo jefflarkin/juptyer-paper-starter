@@ -25,19 +25,27 @@
 ((* block maketitle *))
 
 ((*- if nb.metadata["latex_metadata"]: -*))
-((*- if nb.metadata["latex_metadata"]["author"]: -*))
-    \author{((( nb.metadata["latex_metadata"]["author"] )))}
-((*- endif *))
+  ((*- if nb.metadata["latex_metadata"]["author"]: -*))
+      \author{((( nb.metadata["latex_metadata"]["author"] )))}
+  ((*- endif *))
 
-%((*- if nb.metadata["latex_metadata"]["affiliation"]: -*))
-%    \affiliation{((( nb.metadata["latex_metadata"]["affiliation"] )))}
-%((*- endif *))
-
-((*- if nb.metadata["latex_metadata"]["title"]: -*))
-    \title{((( nb.metadata["latex_metadata"]["title"] )))}
-((*- else -*))
-    \title{((( resources.metadata.name )))}
-((*- endif *))
+  ((*- if nb.metadata["latex_metadata"]["authors"]: -*))
+    ((* for author in nb.metadata["latex_metadata"]["authors"]: -*))
+      ((* if author["name"]: -*))
+        \author{((( author["name"] )))}
+      ((*- endif *))
+    ((*- endfor *))
+  ((*- endif *))
+  
+  %((*- if nb.metadata["latex_metadata"]["affiliation"]: -*))
+  %    \affiliation{((( nb.metadata["latex_metadata"]["affiliation"] )))}
+  %((*- endif *))
+  
+  ((*- if nb.metadata["latex_metadata"]["title"]: -*))
+      \title{((( nb.metadata["latex_metadata"]["title"] )))}
+  ((*- else -*))
+      \title{((( resources.metadata.name )))}
+  ((*- endif *))
 ((*- endif *))
 
 \date{\today}
