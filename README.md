@@ -10,6 +10,8 @@ which was the basis for the template file. A Makefile is provided for
 automatically generating a PDF or Latex file from the jupyter source using
 nbconvert.
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jefflarkin/juptyer-paper-starter/blob/master/jupyter-paper-sample.ipynb)
+
 How Can You Help?
 -----------------
 
