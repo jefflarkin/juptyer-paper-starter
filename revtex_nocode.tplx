@@ -5,6 +5,7 @@
 \documentclass[11pt]{article}
 
 \usepackage{placeins}
+\usepackage{authblk}
 
 \AtBeginDocument{
 \heavyrulewidth=.08em
@@ -34,12 +35,11 @@
       ((* if author["name"]: -*))
         \author{((( author["name"] )))}
       ((*- endif *))
+      ((* if author["affiliation"]: -*))
+        \affil{((( author["affiliation"] )))}
+      ((*- endif *))
     ((*- endfor *))
   ((*- endif *))
-  
-  %((*- if nb.metadata["latex_metadata"]["affiliation"]: -*))
-  %    \affiliation{((( nb.metadata["latex_metadata"]["affiliation"] )))}
-  %((*- endif *))
   
   ((*- if nb.metadata["latex_metadata"]["title"]: -*))
       \title{((( nb.metadata["latex_metadata"]["title"] )))}
@@ -135,3 +135,13 @@
 % Disable input cells
 ((* block input_group *))
 ((* endblock input_group *))
+
+((* block abstract *))
+((*- if nb.metadata["latex_metadata"]: -*))
+  ((*- if nb.metadata["latex_metadata"]["abstract"]: -*))
+      \begin{abstract}
+      ((( nb.metadata["latex_metadata"]["abstract"] )))
+      \end{abstract}
+  ((*- endif *))
+((*- endif *))
+((* endblock abstract *))

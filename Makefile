@@ -1,7 +1,8 @@
-pdf: jupyter-paper-sample.ipynb
-	jupyter nbconvert --template revtex_nocode.tplx --to pdf jupyter-paper-sample.ipynb --execute
-tex: jupyter-paper-sample.ipynb
-	jupyter nbconvert --template revtex_nocode.tplx --to latex jupyter-paper-sample.ipynb --execute
+DOCNAME=jupyter-paper-sample
+pdf: ${DOCNAME}.ipynb
+	jupyter nbconvert --template revtex_nocode.tplx --to pdf ${DOCNAME}.ipynb --execute
+tex: ${DOCNAME}.ipynb
+	jupyter nbconvert --template revtex_nocode.tplx --to latex ${DOCNAME}.ipynb --execute
 .PHONY: clean
 clean:
-	rm -f jupyter-paper-sample.tex jupyter-paper-sample.pdf
+	rm -rf ${DOCNAME}.tex ${DOCNAME}.pdf ${DOCNAME}.tex.aux ${DOCNAME}.fdb_latexmk ${DOCNAME}.fls ${DOCNAME}.log ${DOCNAME}.out ${DOCNAME}.synctex.gz ${DOCNAME}_files
